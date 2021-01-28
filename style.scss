@@ -1,0 +1,215 @@
+body {
+    margin: 0;
+}
+
+li{
+    list-style: none;
+    font-size: 19px;
+}
+
+.change-lang{
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    color: black;
+    font-size: 13px;
+    background-color:rgba(0, 0, 0, 0.05);
+}
+// .change-lang-active{
+   
+// }
+
+header{
+    padding-top: 50px;
+    background-color: white;
+    // height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    & .header_container{
+        width: 100%;
+        position: relative;
+
+        &_content{
+            position: relative;
+        }
+    }
+}
+.wrap{
+    margin: 0 auto;
+    text-align: center;
+    width: 95%;
+    & header_content{
+
+        & title{
+           
+            h1{
+                font-size: 28px;
+            }
+        }
+    }
+}
+.container{
+    margin: 0 auto;
+    width: 100%;
+
+    & .container_items{
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100%;
+
+        position: relative;
+        background-color:white;
+        height: 100vh;
+        z-index: 2;
+        transition: all 0.8s;
+    }
+
+}
+.mobile-menu {
+    position: fixed;
+    right: 0;
+    top: 60px;
+    width: 300px;
+
+    &__btn {
+        background-color: unset;
+        border: none;
+        outline: none !important;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 33%;
+    
+        & > span {
+            background-color: black;
+            width: 35px;
+            height: 2px;
+            display: block;
+            margin-bottom: 9px;
+            transition: transform 0.7s;
+    
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s;
+        cursor: pointer;
+    }
+    &__main {
+        padding: 0;
+        perspective: 2000px;
+        transform-style: preserve-3d;
+    }
+    &__item {
+        list-style: none;
+        display: block;
+        transform: translate3d(0, 0, -1000px);
+        padding: 0 40px;
+        transition: transform 0.3s, opacity 0.2s;
+        opacity: 0;
+    }
+    &__link {
+        display: block;
+        margin-top: 30px;
+        color: black;
+        text-decoration: none;
+    }
+}
+
+.menu-open {
+    & .container_items {
+        transform: translate(-300px, 60px);
+        box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
+    }
+    
+    & .mobile-menu {
+        &__cover {
+            opacity: 1;
+            visibility: visible;
+        }
+        &__item {
+            transform: none;
+            opacity: 1;
+
+            @for $i from 1 through 6 {
+                &:nth-child(#{$i}) {
+                    transition-delay: $i * 0.07s;
+                }
+            }
+        }
+        &__btn {
+            & > span {
+                background-color: black;
+    
+                &:nth-child(1) {
+                    transition-delay: 70ms;
+                    transform: translateY(11px) rotate(135deg);
+                }
+                &:nth-child(2) {
+                    transition-delay: 0s;
+                    transform:  translateX(-18px) scaleX(0);
+                }
+                &:nth-child(3) {
+                    transition-delay: 140ms;
+                    transform: translateY(-11px) rotate(-135deg);
+                }
+            }
+        }
+    }
+}
+
+.main-title {
+    font-weight: 400;
+    font-size: 23px;
+}
+.sub-title {
+    display: block;
+    font-size: 14px;
+    color: black;
+}
+
+.list_container{
+    margin-top: 58px;
+    li{
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (min-height:800px ){
+    @import 'breakpoints/height-800up';
+}
+@media screen and (min-width: 481px){
+    @import 'breakpoints/480up';
+  }
+  
+  @media screen and (min-width: 601px){
+    @import 'breakpoints/600up';
+  }
+  
+  @media screen and (min-width: 961px){
+    @import 'breakpoints/960up';
+  }
+  
+  @media screen and (min-width: 1280px){
+    @import 'breakpoints/1280up';
+  }
+  
+
+
+
+
+
